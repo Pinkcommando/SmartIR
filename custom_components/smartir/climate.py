@@ -197,7 +197,7 @@ class SmartIRClimate(ClimateEntity, RestoreEntity):
             self._hvac_mode = last_state.state
             self._current_fan_mode = last_state.attributes['fan_mode']
             self._current_swing_mode = last_state.attributes.get('swing_mode')
-            self._target_temperature = last_state.attributes['temperature']
+            self._target_temperature = self._display_temp_to_device_temp(last_state.attributes['temperature'])
 
             if 'last_on_operation' in last_state.attributes:
                 self._last_on_operation = last_state.attributes['last_on_operation']
